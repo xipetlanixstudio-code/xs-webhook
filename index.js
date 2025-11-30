@@ -2,6 +2,11 @@ const express = require("express");
 const app = express();
 app.use(express.json());
 
+// Health check (Render necesita esto)
+app.get("/healthz", (req, res) => {
+  res.status(200).send("OK");
+});
+
 // Webhook Verification
 app.get("/webhook", (req, res) => {
   const verify_token = "XS2025";
